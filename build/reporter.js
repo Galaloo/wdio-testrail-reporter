@@ -26,7 +26,7 @@ export default class TestRailReporter extends WDIOReporter {
         __classPrivateFieldSet(this, _TestRailReporter_options, options, "f");
     }
     get isSynchronised() {
-        return __classPrivateFieldGet(this, _TestRailReporter_synced, "f");
+        return true;
     }
     titleToCaseIds(title) {
         let caseIds = [];
@@ -138,6 +138,8 @@ _TestRailReporter_api = new WeakMap(), _TestRailReporter_options = new WeakMap()
 }, _TestRailReporter_updateTestRun = async function _TestRailReporter_updateTestRun() {
     const runId = await __classPrivateFieldGet(this, _TestRailReporter_instances, "m", _TestRailReporter_getRunId).call(this);
     const caseIds = __classPrivateFieldGet(this, _TestRailReporter_testCases, "f").map((test) => test.case_id);
-    await __classPrivateFieldGet(this, _TestRailReporter_api, "f").updateTestRun(runId, caseIds),
+    if (caseIds.length > 0) {
+        await __classPrivateFieldGet(this, _TestRailReporter_api, "f").updateTestRun(runId, caseIds);
         await __classPrivateFieldGet(this, _TestRailReporter_api, "f").updateTestRunResults(runId, __classPrivateFieldGet(this, _TestRailReporter_testCases, "f"));
+    }
 };
