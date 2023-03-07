@@ -26,7 +26,7 @@ export default class TestRailReporter extends WDIOReporter {
         __classPrivateFieldSet(this, _TestRailReporter_options, options, "f");
     }
     get isSynchronised() {
-        return true;
+        return __classPrivateFieldGet(this, _TestRailReporter_synced, "f");
     }
     titleToCaseIds(title) {
         let caseIds = [];

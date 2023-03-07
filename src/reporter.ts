@@ -20,8 +20,8 @@ export default class TestRailReporter extends WDIOReporter {
     }
 
     get isSynchronised() {
-        // return this.#synced;
-        return true;
+        return this.#synced;
+        // return true;
     }
 
     titleToCaseIds(title: string): number[] {
